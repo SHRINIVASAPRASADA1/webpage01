@@ -1,0 +1,122 @@
+/* ==========================================================================
+   GDFCone — custom stylesheet
+   This file only holds what Tailwind's utility classes can't express
+   directly: font imports, keyframe animations, and a couple of
+   scroll-driven SVG bits. Everything else in the page is Tailwind.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,560;9..144,650;9..144,780&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --font-serif: "Fraunces", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-mono-label {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: #1e2a3f;
+  color: #ffffff;
+}
+
+/* Scroll cue on hero */
+@keyframes cueMove {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.animate-cue {
+  animation: cueMove 1.8s infinite;
+}
+
+/* Gentle float for the hero + journey plane icons (fallback for GSAP-less state) */
+@keyframes planeFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, -10px);
+  }
+}
+.animate-plane-float {
+  animation: planeFloat 3.2s ease-in-out infinite;
+}
+
+/* Dotted background texture used behind the hero + CTA band */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.bg-dot-grid-dark {
+  background-image: radial-gradient(rgba(30, 41, 59, 0.12) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Journey timeline connecting line, drawn on scroll via JS (stroke-dashoffset) */
+.journey-line-fg {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* Reveal-on-scroll starting state, animated to visible via GSAP */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+/* FAQ answer collapse/expand (max-height is toggled via inline style in JS) */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+/* Plus/minus icon rotation for FAQ */
+.faq-plus::before,
+.faq-plus::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.faq-plus::before {
+  width: 14px;
+  height: 2px;
+  top: 9px;
+  left: 3px;
+}
+.faq-plus::after {
+  width: 2px;
+  height: 14px;
+  left: 9px;
+  top: 3px;
+}
+.faq-item.open .faq-plus::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}

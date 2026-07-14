@@ -3,1346 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meridian — Study Abroad Education Loans</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,560;9..144,650;9..144,780&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>GDFCone — Study Abroad Education Loans</title>
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
-    <style>
-      :root {
-        --white: #ffffff;
-        --off: #f7f8fa;
-        --navy: #0a1f44;
-        --navy-2: #123164;
-        --navy-soft: #eef1f7;
-        --grey: #7c8493;
-        --grey-line: #e3e6ec;
-        --black: #0b0c0e;
-        --gold: #c8a24d;
-        --max: 1180px;
-        --serif: "Fraunces", serif;
-        --sans: "Inter", sans-serif;
-        --mono: "Space Mono", monospace;
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: var(--sans);
-        color: var(--black);
-        background: var(--white);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-      }
-      img {
-        max-width: 100%;
-        display: block;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      ul {
-        list-style: none;
-      }
-      .container {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 0 32px;
-      }
-      section {
-        position: relative;
-      }
-
-      ::selection {
-        background: var(--navy);
-        color: var(--white);
-      }
-
-      /* ---------- typography helpers ---------- */
-      .eyebrow {
-        font-family: var(--mono);
-        font-size: 12.5px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--navy);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 26px;
-        height: 1px;
-        background: var(--gold);
-      }
-      .eyebrow.on-dark {
-        color: #b9c7e8;
-      }
-      .eyebrow.on-dark::before {
-        background: var(--gold);
-      }
-
-      h1,
-      h2,
-      h3 {
-        font-family: var(--serif);
-        font-weight: 560;
-        line-height: 1.05;
-        letter-spacing: -0.01em;
-      }
-      .h1 {
-        font-size: clamp(38px, 5.6vw, 74px);
-        font-weight: 650;
-      }
-      .h2 {
-        font-size: clamp(30px, 4vw, 48px);
-      }
-      .h3 {
-        font-size: clamp(20px, 2.2vw, 26px);
-      }
-      .lede {
-        font-size: clamp(16px, 1.5vw, 19px);
-        color: var(--grey);
-        line-height: 1.65;
-        font-weight: 400;
-        max-width: 60ch;
-      }
-      .section-head {
-        max-width: 680px;
-        margin-bottom: 56px;
-      }
-      .section-head.center {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-      }
-
-      /* ---------- buttons ---------- */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        font-family: var(--sans);
-        font-weight: 600;
-        font-size: 14.5px;
-        padding: 16px 30px;
-        border-radius: 2px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        transition:
-          transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1),
-          background 0.3s,
-          color 0.3s,
-          border-color 0.3s;
-        white-space: nowrap;
-      }
-      .btn-primary {
-        background: var(--navy);
-        color: var(--white);
-      }
-      .btn-primary:hover {
-        background: var(--navy-2);
-        transform: translateY(-2px);
-      }
-      .btn-ghost {
-        background: transparent;
-        color: var(--navy);
-        border-color: var(--navy);
-      }
-      .btn-ghost:hover {
-        background: var(--navy);
-        color: var(--white);
-        transform: translateY(-2px);
-      }
-      .btn-on-dark {
-        background: var(--white);
-        color: var(--navy);
-      }
-      .btn-on-dark:hover {
-        background: var(--gold);
-        color: var(--navy);
-        transform: translateY(-2px);
-      }
-      .btn-line-dark {
-        background: transparent;
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.35);
-      }
-      .btn-line-dark:hover {
-        border-color: #fff;
-        transform: translateY(-2px);
-      }
-
-      /* ================= NAV ================= */
-      header.nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 200;
-        padding: 22px 0;
-        transition:
-          background 0.4s ease,
-          padding 0.4s ease,
-          box-shadow 0.4s ease;
-      }
-      header.nav .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      header.nav.scrolled {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(10px);
-        padding: 14px 0;
-        box-shadow: 0 1px 0 var(--grey-line);
-      }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-family: var(--serif);
-        font-weight: 650;
-        font-size: 22px;
-        color: #fff;
-        letter-spacing: -0.01em;
-      }
-      header.nav.scrolled .logo {
-        color: var(--navy);
-      }
-      .logo .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--gold);
-      }
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 38px;
-      }
-      .nav-links a {
-        font-size: 14px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.82);
-        transition: color 0.3s;
-        position: relative;
-      }
-      header.nav.scrolled .nav-links a {
-        color: var(--navy);
-      }
-      .nav-links a:not(.btn):hover {
-        color: #fff;
-      }
-      header.nav.scrolled .nav-links a:not(.btn):hover {
-        color: var(--navy-2);
-      }
-      .nav-cta {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-      }
-      .nav-links .btn {
-        padding: 11px 22px;
-        font-size: 13.5px;
-      }
-      .burger {
-        display: none;
-      }
-
-      /* ================= HERO ================= */
-      .hero {
-        min-height: 100vh;
-        background: linear-gradient(
-          180deg,
-          #08172f 0%,
-          var(--navy) 55%,
-          var(--navy-2) 100%
-        );
-        color: #fff;
-        display: flex;
-        align-items: center;
-        padding: 150px 0 90px;
-        overflow: hidden;
-      }
-      .hero-inner {
-        position: relative;
-        z-index: 5;
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 60px;
-        align-items: end;
-      }
-      .hero-copy .h1 {
-        color: #fff;
-        margin-bottom: 22px;
-      }
-      .hero-copy .h1 em {
-        font-style: italic;
-        color: var(--gold);
-        font-weight: 450;
-      }
-      .hero-copy p.lede {
-        color: #c4cee4;
-        max-width: 52ch;
-      }
-      .hero-badges {
-        display: flex;
-        gap: 14px;
-        margin-top: 34px;
-        flex-wrap: wrap;
-      }
-      .hero-badge {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font-size: 13px;
-        color: #dfe6f5;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        padding: 9px 16px;
-        border-radius: 999px;
-      }
-      .hero-badge svg {
-        width: 14px;
-        height: 14px;
-        flex: none;
-      }
-
-      .hero-form {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        backdrop-filter: blur(14px);
-        border-radius: 6px;
-        padding: 34px;
-      }
-      .hero-form h3 {
-        color: #fff;
-        font-size: 19px;
-        margin-bottom: 6px;
-        font-weight: 560;
-      }
-      .hero-form .sub {
-        color: #aeb9d1;
-        font-size: 13.5px;
-        margin-bottom: 22px;
-      }
-      .field {
-        margin-bottom: 14px;
-      }
-      .field label {
-        display: block;
-        font-size: 11.5px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #9fabc6;
-        margin-bottom: 6px;
-        font-family: var(--mono);
-      }
-      .field input,
-      .field select {
-        width: 100%;
-        padding: 12px 14px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 3px;
-        color: #fff;
-        font-size: 14px;
-        font-family: var(--sans);
-      }
-      .field input::placeholder {
-        color: #8996b3;
-      }
-      .field select option {
-        color: #111;
-      }
-      .row2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-      .hero-form .btn {
-        width: 100%;
-        margin-top: 8px;
-      }
-      .fine {
-        font-size: 11px;
-        color: #8494b5;
-        margin-top: 12px;
-        line-height: 1.5;
-      }
-
-      /* parallax layers */
-      .hero-layer {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-      .hero-orbit {
-        position: absolute;
-        right: -180px;
-        top: -160px;
-        width: 640px;
-        height: 640px;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 50%;
-      }
-      .hero-orbit.o2 {
-        width: 900px;
-        height: 900px;
-        right: -320px;
-        top: -300px;
-        border-color: rgba(255, 255, 255, 0.05);
-      }
-      .hero-dots {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(
-          rgba(255, 255, 255, 0.15) 1px,
-          transparent 1px
-        );
-        background-size: 26px 26px;
-        opacity: 0.35;
-      }
-      .hero-plane {
-        position: absolute;
-        width: 34px;
-        height: 34px;
-        right: 14%;
-        top: 22%;
-        opacity: 0.9;
-      }
-      .hero-route {
-        position: absolute;
-        left: -5%;
-        bottom: 8%;
-        width: 70%;
-        opacity: 0.5;
-      }
-
-      .scroll-cue {
-        position: absolute;
-        bottom: 34px;
-        left: 32px;
-        z-index: 6;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #9fabc6;
-        font-family: var(--mono);
-        font-size: 11px;
-        letter-spacing: 0.1em;
-      }
-      .scroll-cue .line {
-        width: 1px;
-        height: 36px;
-        background: linear-gradient(#c8a24d, transparent);
-        animation: cue 1.8s infinite;
-      }
-      @keyframes cue {
-        0% {
-          opacity: 0;
-          transform: translateY(-8px);
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          transform: translateY(14px);
-        }
-      }
-
-      /* ================= STAT BAND ================= */
-      .stat-band {
-        background: var(--navy);
-        color: #fff;
-        padding: 52px 0;
-      }
-      .stat-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-      .stat-item {
-        text-align: left;
-        border-left: 1px solid rgba(255, 255, 255, 0.16);
-        padding-left: 22px;
-      }
-      .stat-num {
-        font-family: var(--mono);
-        font-size: clamp(26px, 3vw, 38px);
-        color: #fff;
-        font-weight: 700;
-      }
-      .stat-label {
-        font-size: 13px;
-        color: #a9b6d2;
-        margin-top: 6px;
-      }
-
-      /* ================= GENERIC SECTIONS ================= */
-      .pad {
-        padding: 120px 0;
-      }
-      .pad-sm {
-        padding: 80px 0;
-      }
-      .bg-off {
-        background: var(--off);
-      }
-
-      /* feature grid */
-      .feat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        background: var(--grey-line);
-        border: 1px solid var(--grey-line);
-      }
-      .feat-card {
-        background: var(--white);
-        padding: 38px 34px;
-        transition: background 0.35s;
-      }
-      .feat-card:hover {
-        background: var(--navy-soft);
-      }
-      .feat-num {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--gold);
-        margin-bottom: 18px;
-        display: block;
-      }
-      .feat-card h3 {
-        font-size: 19px;
-        margin-bottom: 10px;
-        font-weight: 600;
-        font-family: var(--sans);
-      }
-      .feat-card p {
-        font-size: 14.5px;
-        color: var(--grey);
-        line-height: 1.6;
-      }
-      .feat-icon {
-        width: 34px;
-        height: 34px;
-        margin-bottom: 20px;
-        color: var(--navy);
-      }
-
-      /* compare cards */
-      .compare-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 26px;
-      }
-      .compare-card {
-        border: 1px solid var(--grey-line);
-        padding: 36px 30px;
-        position: relative;
-        background: #fff;
-        transition:
-          transform 0.4s,
-          box-shadow 0.4s;
-      }
-      .compare-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 50px -20px rgba(10, 31, 68, 0.25);
-      }
-      .compare-card.hi {
-        border-color: var(--navy);
-        box-shadow: 0 24px 50px -20px rgba(10, 31, 68, 0.3);
-      }
-      .compare-tag {
-        position: absolute;
-        top: -12px;
-        left: 30px;
-        background: var(--navy);
-        color: #fff;
-        font-family: var(--mono);
-        font-size: 10.5px;
-        padding: 5px 12px;
-        letter-spacing: 0.06em;
-      }
-      .compare-card h3 {
-        font-size: 20px;
-        margin: 6px 0 4px;
-      }
-      .compare-rate {
-        font-family: var(--mono);
-        font-size: 28px;
-        color: var(--navy);
-        margin: 14px 0 18px;
-      }
-      .compare-list {
-        margin-top: 18px;
-      }
-      .compare-list li {
-        display: flex;
-        gap: 10px;
-        font-size: 13.8px;
-        color: var(--grey);
-        padding: 7px 0;
-        border-top: 1px solid var(--grey-line);
-      }
-      .compare-list li:first-child {
-        border-top: none;
-      }
-      .compare-list svg {
-        width: 14px;
-        height: 14px;
-        flex: none;
-        margin-top: 3px;
-        color: var(--navy);
-      }
-
-      /* eligibility tool */
-      .elig-wrap {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 70px;
-        align-items: start;
-      }
-      .elig-tool {
-        background: var(--navy);
-        color: #fff;
-        padding: 40px;
-        border-radius: 6px;
-      }
-      .elig-tool h3 {
-        color: #fff;
-        font-size: 20px;
-        margin-bottom: 22px;
-      }
-      .elig-row {
-        margin-bottom: 18px;
-      }
-      .elig-row label {
-        display: block;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-        color: #a9b6d2;
-        font-family: var(--mono);
-        margin-bottom: 8px;
-      }
-      .chip-set {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-      .chip {
-        padding: 9px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 999px;
-        font-size: 13px;
-        cursor: pointer;
-        transition: all 0.25s;
-        color: #dfe6f5;
-        background: rgba(255, 255, 255, 0.03);
-      }
-      .chip.active {
-        background: #fff;
-        color: var(--navy);
-        border-color: #fff;
-      }
-      #elig-result {
-        margin-top: 24px;
-        padding: 18px 20px;
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        font-size: 14px;
-        color: #e8ecf6;
-        line-height: 1.6;
-        display: none;
-      }
-      #elig-result strong {
-        color: var(--gold);
-      }
-      .elig-side ol {
-        counter-reset: step;
-        margin-top: 6px;
-      }
-      .elig-side li {
-        counter-increment: step;
-        position: relative;
-        padding: 20px 0 20px 46px;
-        border-bottom: 1px solid var(--grey-line);
-      }
-      .elig-side li::before {
-        content: counter(step, decimal-leading-zero);
-        position: absolute;
-        left: 0;
-        top: 20px;
-        font-family: var(--mono);
-        font-size: 13px;
-        color: var(--navy);
-        font-weight: 700;
-      }
-      .elig-side li h4 {
-        font-size: 15.5px;
-        font-weight: 600;
-        margin-bottom: 4px;
-      }
-      .elig-side li p {
-        font-size: 13.8px;
-        color: var(--grey);
-      }
-
-      /* journey */
-      .journey {
-        background: var(--white);
-        padding: 120px 0 60px;
-        position: relative;
-      }
-      .journey-path-wrap {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .journey-svg {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 100%;
-      }
-      .journey-line-bg {
-        stroke: var(--grey-line);
-        stroke-width: 2;
-      }
-      .journey-line-fg {
-        stroke: var(--navy);
-        stroke-width: 2;
-      }
-      .journey-plane {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        left: 50%;
-        top: 0;
-        transform: translate(-50%, -50%);
-        color: var(--navy);
-        z-index: 3;
-      }
-      .j-step {
-        display: grid;
-        grid-template-columns: 1fr 60px 1fr;
-        align-items: center;
-        gap: 0;
-        position: relative;
-        min-height: 150px;
-      }
-      .j-card {
-        padding: 26px 28px;
-        background: #fff;
-        border: 1px solid var(--grey-line);
-        max-width: 380px;
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      .j-step:nth-child(odd) .j-card {
-        grid-column: 1;
-        justify-self: end;
-        text-align: right;
-      }
-      .j-step:nth-child(even) .j-card {
-        grid-column: 3;
-        justify-self: start;
-      }
-      .j-node {
-        grid-column: 2;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: #fff;
-        border: 2px solid var(--navy);
-        justify-self: center;
-        z-index: 2;
-      }
-      .j-card .j-tag {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--gold);
-        display: block;
-        margin-bottom: 8px;
-      }
-      .j-card h4 {
-        font-size: 17.5px;
-        margin-bottom: 8px;
-        font-weight: 600;
-      }
-      .j-card p {
-        font-size: 13.8px;
-        color: var(--grey);
-        line-height: 1.6;
-      }
-
-      /* documents */
-      .doc-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px 40px;
-      }
-      .doc-item {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        padding: 16px 0;
-        border-bottom: 1px solid var(--grey-line);
-      }
-      .doc-item svg {
-        width: 18px;
-        height: 18px;
-        color: var(--navy);
-        flex: none;
-        margin-top: 2px;
-      }
-      .doc-item span {
-        font-size: 14.5px;
-        color: var(--black);
-      }
-
-      /* destinations */
-      .dest-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-      }
-      .dest-card {
-        position: relative;
-        height: 230px;
-        padding: 22px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        background: linear-gradient(160deg, var(--navy) 0%, #06132b 100%);
-        color: #fff;
-        overflow: hidden;
-        cursor: default;
-      }
-      .dest-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        opacity: 0.15;
-        background-image: radial-gradient(
-          circle at 30% 20%,
-          #fff 0,
-          transparent 45%
-        );
-      }
-      .dest-flag {
-        font-family: var(--mono);
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        color: var(--gold);
-        margin-bottom: 10px;
-        position: relative;
-      }
-      .dest-card h4 {
-        font-size: 19px;
-        font-weight: 600;
-        font-family: var(--sans);
-        position: relative;
-        margin-bottom: 6px;
-      }
-      .dest-card p {
-        font-size: 12.5px;
-        color: #c3ccdf;
-        line-height: 1.5;
-        position: relative;
-      }
-      .dest-card {
-        transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.3, 1);
-      }
-      .dest-card:hover {
-        transform: translateY(-8px);
-      }
-
-      /* loan overview */
-      .overview-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        background: var(--grey-line);
-        border: 1px solid var(--grey-line);
-      }
-      .ov-card {
-        background: #fff;
-        padding: 44px 36px;
-      }
-      .ov-num {
-        font-family: var(--mono);
-        font-size: 40px;
-        color: var(--navy);
-        margin-bottom: 14px;
-      }
-      .ov-card h4 {
-        font-size: 15px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--grey);
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-      .ov-card p {
-        font-size: 13.8px;
-        color: var(--grey);
-        line-height: 1.6;
-      }
-
-      /* timeline (apply early) */
-      .timeline-wrap {
-        overflow-x: auto;
-        padding-bottom: 10px;
-      }
-      .timeline {
-        display: flex;
-        gap: 0;
-        min-width: 900px;
-        position: relative;
-        padding-top: 40px;
-      }
-      .timeline::before {
-        content: "";
-        position: absolute;
-        top: 8px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: var(--grey-line);
-      }
-      .t-item {
-        flex: 1;
-        position: relative;
-        padding: 0 16px;
-      }
-      .t-dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: var(--navy);
-        position: absolute;
-        top: 4px;
-        left: 16px;
-      }
-      .t-item h5 {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--navy);
-        margin: 20px 0 8px;
-      }
-      .t-item p {
-        font-size: 13.5px;
-        color: var(--grey);
-        line-height: 1.55;
-      }
-
-      /* testimonials */
-      .testi-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-      }
-      .testi-card {
-        background: var(--off);
-        padding: 32px 28px;
-        border-top: 2px solid var(--navy);
-      }
-      .testi-card p.quote {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--black);
-        margin-bottom: 22px;
-        font-family: var(--serif);
-        font-weight: 450;
-      }
-      .testi-who {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      .testi-avatar {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        background: var(--navy);
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--mono);
-        font-size: 13px;
-      }
-      .testi-who h5 {
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .testi-who span {
-        font-size: 12.5px;
-        color: var(--grey);
-      }
-
-      /* FAQ */
-      .faq-item {
-        border-bottom: 1px solid var(--grey-line);
-      }
-      .faq-q {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 0;
-        cursor: pointer;
-        font-size: 16.5px;
-        font-weight: 600;
-        font-family: var(--serif);
-        gap: 20px;
-      }
-      .faq-q .plus {
-        width: 20px;
-        height: 20px;
-        flex: none;
-        position: relative;
-      }
-      .faq-q .plus::before,
-      .faq-q .plus::after {
-        content: "";
-        position: absolute;
-        background: var(--navy);
-        transition: transform 0.3s;
-      }
-      .faq-q .plus::before {
-        width: 14px;
-        height: 2px;
-        top: 9px;
-        left: 3px;
-      }
-      .faq-q .plus::after {
-        width: 2px;
-        height: 14px;
-        left: 9px;
-        top: 3px;
-      }
-      .faq-item.open .plus::after {
-        transform: rotate(90deg);
-        opacity: 0;
-      }
-      .faq-a {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease;
-      }
-      .faq-a p {
-        font-size: 14.5px;
-        color: var(--grey);
-        line-height: 1.7;
-        padding-bottom: 26px;
-        max-width: 75ch;
-      }
-
-      /* CTA band */
-      .cta-band {
-        background: linear-gradient(
-          120deg,
-          #08172f,
-          var(--navy) 60%,
-          var(--navy-2)
-        );
-        color: #fff;
-        padding: 110px 0;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .cta-band h2 {
-        color: #fff;
-        margin-bottom: 18px;
-      }
-      .cta-band p {
-        color: #c4cee4;
-        max-width: 56ch;
-        margin: 0 auto 36px;
-      }
-      .cta-actions {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-      }
-
-      /* footer */
-      footer {
-        background: #06132b;
-        color: #c3ccdf;
-        padding: 70px 0 30px;
-      }
-      .foot-grid {
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        gap: 40px;
-        padding-bottom: 50px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .foot-logo {
-        font-family: var(--serif);
-        font-size: 22px;
-        color: #fff;
-        margin-bottom: 14px;
-      }
-      .foot-grid p {
-        font-size: 13.5px;
-        line-height: 1.7;
-        color: #8b96b3;
-        max-width: 32ch;
-      }
-      .foot-col h5 {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #7c88a8;
-        margin-bottom: 16px;
-        font-family: var(--mono);
-      }
-      .foot-col li {
-        margin-bottom: 10px;
-      }
-      .foot-col a {
-        font-size: 13.5px;
-        color: #c3ccdf;
-        transition: color 0.25s;
-      }
-      .foot-col a:hover {
-        color: #fff;
-      }
-      .foot-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 26px;
-        font-size: 12.5px;
-        color: #69749a;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .foot-legal {
-        font-size: 11.5px;
-        color: #5b6790;
-        line-height: 1.7;
-        max-width: 900px;
-        margin-top: 20px;
-      }
-
-      /* reveal utility */
-      .reveal {
-        opacity: 0;
-        transform: translateY(36px);
-      }
-
-      /* responsive */
-      @media (max-width: 980px) {
-        .hero-inner {
-          grid-template-columns: 1fr;
-        }
-        .nav-links {
-          display: none;
-        }
-        .feat-grid,
-        .compare-grid,
-        .overview-grid {
-          grid-template-columns: 1fr;
-        }
-        .stat-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .dest-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .elig-wrap {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-        .doc-grid {
-          grid-template-columns: 1fr;
-        }
-        .foot-grid {
-          grid-template-columns: 1fr 1fr;
-          gap: 30px;
-        }
-        .j-step {
-          grid-template-columns: 1fr;
-          min-height: auto;
-          padding: 10px 0 34px 40px;
-        }
-        .journey-svg {
-          left: 14px;
-          transform: none;
-        }
-        .journey-plane {
-          left: 14px;
-        }
-        .j-step:nth-child(odd) .j-card,
-        .j-step:nth-child(even) .j-card {
-          grid-column: 1;
-          justify-self: start;
-          text-align: left;
-          max-width: 520px;
-        }
-        .j-node {
-          grid-column: 1;
-          position: absolute;
-          left: 8px;
-        }
-        .testi-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0b0c0e",
+              gold: {
+                DEFAULT: "#c8a24d",
+                soft: "#e4d3a4",
+              },
+            },
+            fontFamily: {
+              serif: ["Fraunces", "serif"],
+              sans: ["Inter", "sans-serif"],
+              mono: ["Space Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
+  <body class="bg-white text-ink antialiased overflow-x-hidden">
     <!-- ============ NAV ============ -->
-    <header class="nav" id="siteNav">
-      <div class="container">
-        <a href="#top" class="logo"><span class="dot"></span>Meridian</a>
-        <nav class="nav-links">
-          <a href="#why">Why Meridian</a>
-          <a href="#journey">How it works</a>
-          <a href="#eligibility">Eligibility</a>
-          <a href="#destinations">Destinations</a>
-          <a href="#faq">FAQ</a>
-          <a href="#eligibility" class="btn btn-primary">Check Eligibility</a>
+    <header
+      id="siteNav"
+      class="fixed top-0 left-0 right-0 z-[200] py-5 transition-all duration-300"
+    >
+      <div class="max-w-[1180px] mx-auto px-8 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-2.5 font-serif font-semibold text-[22px] text-white nav-text">
+          <span class="w-2 h-2 rounded-full bg-gold"></span>GDFCone
+        </a>
+        <nav class="hidden md:flex items-center gap-9">
+          <a href="#why" class="text-sm font-medium text-white/80 nav-link hover:text-white transition-colors">Why GDFCone</a>
+          <a href="#journey" class="text-sm font-medium text-white/80 nav-link hover:text-white transition-colors">How it works</a>
+          <a href="#eligibility" class="text-sm font-medium text-white/80 nav-link hover:text-white transition-colors">Eligibility</a>
+          <a href="#destinations" class="text-sm font-medium text-white/80 nav-link hover:text-white transition-colors">Destinations</a>
+          <a href="#faq" class="text-sm font-medium text-white/80 nav-link hover:text-white transition-colors">FAQ</a>
+          <a
+            href="#eligibility"
+            class="inline-flex items-center gap-2 text-[13.5px] font-semibold px-5 py-2.5 rounded-sm bg-neutral-900 text-white hover:bg-neutral-700 transition-all hover:-translate-y-0.5"
+            >Check Eligibility</a
+          >
         </nav>
       </div>
     </header>
 
     <!-- ============ HERO ============ -->
-    <section class="hero" id="top">
-      <div class="hero-layer" data-speed="0.15">
-        <div class="hero-orbit o2"></div>
-        <div class="hero-orbit"></div>
+    <section id="top" class="relative min-h-screen bg-neutral-950 text-white flex items-center pt-36 pb-24 overflow-hidden">
+      <div class="hero-layer absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" data-speed="0.3"></div>
+      <div class="hero-layer absolute inset-0 pointer-events-none" data-speed="0.15">
+        <div class="absolute rounded-full border border-white/5" style="right:-320px; top:-300px; width:900px; height:900px;"></div>
+        <div class="absolute rounded-full border border-white/10" style="right:-180px; top:-160px; width:640px; height:640px;"></div>
       </div>
-      <div class="hero-layer hero-dots" data-speed="0.3"></div>
-      <div class="hero-layer" data-speed="0.4">
-        <svg
-          class="hero-route"
-          viewBox="0 0 600 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 100 C 120 20, 260 130, 380 40 S 560 10, 600 60"
-            stroke="#c8a24d"
-            stroke-width="1.2"
-            stroke-dasharray="4 7"
-            opacity="0.55"
-          />
+      <div class="hero-layer absolute inset-0 pointer-events-none" data-speed="0.4">
+        <svg class="absolute opacity-50" style="left:-5%; bottom:8%; width:70%;" viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 100 C 120 20, 260 130, 380 40 S 560 10, 600 60" stroke="#c8a24d" stroke-width="1.2" stroke-dasharray="4 7" />
         </svg>
-        <svg
-          class="hero-plane"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13L2 16.5Z"
-            fill="#c8a24d"
-          />
+        <svg id="heroPlane" class="absolute w-8 h-8 animate-plane-float" style="right:14%; top:22%;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13L2 16.5Z" fill="#c8a24d" />
         </svg>
       </div>
 
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow on-dark">Education Loans for Studying Abroad</div>
-          <h1 class="h1">
-            Fund your global degree — <em>fully financed</em>, fully yours.
+      <div class="relative z-10 max-w-[1180px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-14 items-end">
+        <div>
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-400 mb-5">
+            <span class="w-6 h-px bg-gold"></span>Education Loans for Studying Abroad
+          </div>
+          <h1 class="font-serif font-bold text-[38px] sm:text-[52px] lg:text-[74px] leading-[1.05] tracking-tight mb-6">
+            Fund your global degree — <em class="italic font-normal text-gold not-italic sm:italic">fully financed</em>, fully yours.
           </h1>
-          <p class="lede">
-            Meridian matches Indian students with RBI-regulated banks and NBFCs
+          <p class="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-[52ch]">
+            GDFCone matches Indian students with RBI-regulated banks and NBFCs
             offering unsecured loans up to 100% of tuition and living costs,
             pre-visa disbursement, and a fully digital process — for
             destinations across the USA, UK, Canada, Europe and beyond.
           </p>
-          <div class="hero-badges">
-            <div class="hero-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
+          <div class="flex flex-wrap gap-3.5 mt-8">
+            <div class="flex items-center gap-2 text-[13px] text-neutral-200 border border-white/15 px-4 py-2.5 rounded-full">
+              <svg class="w-3.5 h-3.5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>
               No collateral required*
             </div>
-            <div class="hero-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
+            <div class="flex items-center gap-2 text-[13px] text-neutral-200 border border-white/15 px-4 py-2.5 rounded-full">
+              <svg class="w-3.5 h-3.5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>
               20+ lending partners
             </div>
-            <div class="hero-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
+            <div class="flex items-center gap-2 text-[13px] text-neutral-200 border border-white/15 px-4 py-2.5 rounded-full">
+              <svg class="w-3.5 h-3.5 flex-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>
               Sanction in 7–15 days
             </div>
           </div>
         </div>
 
-        <form class="hero-form" id="leadForm">
-          <h3>Get a free expert callback</h3>
-          <div class="sub">
-            Takes under two minutes. No impact on your credit score.
-          </div>
-          <div class="row2">
-            <div class="field">
-              <label>First name</label
-              ><input type="text" placeholder="Ananya" required />
+        <form id="leadForm" class="bg-white/5 border border-white/15 backdrop-blur-lg rounded-md p-8">
+          <h3 class="text-white text-lg font-semibold mb-1.5">Get a free expert callback</h3>
+          <div class="text-neutral-400 text-[13.5px] mb-6">Takes under two minutes. No impact on your credit score.</div>
+          <div class="grid grid-cols-2 gap-3 mb-3.5">
+            <div>
+              <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">First name</label>
+              <input type="text" placeholder="Ananya" required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm placeholder:text-neutral-500" />
             </div>
-            <div class="field">
-              <label>Last name</label
-              ><input type="text" placeholder="Rao" required />
+            <div>
+              <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">Last name</label>
+              <input type="text" placeholder="Rao" required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm placeholder:text-neutral-500" />
             </div>
           </div>
-          <div class="row2">
-            <div class="field">
-              <label>Phone</label
-              ><input type="tel" placeholder="+91 00000 00000" required />
+          <div class="grid grid-cols-2 gap-3 mb-3.5">
+            <div>
+              <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">Phone</label>
+              <input type="tel" placeholder="+91 00000 00000" required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm placeholder:text-neutral-500" />
             </div>
-            <div class="field">
-              <label>Email</label
-              ><input type="email" placeholder="you@email.com" required />
+            <div>
+              <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">Email</label>
+              <input type="email" placeholder="you@email.com" required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm placeholder:text-neutral-500" />
             </div>
           </div>
-          <div class="field">
-            <label>Preferred study destination</label>
-            <select required>
+          <div class="mb-3.5">
+            <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">Preferred study destination</label>
+            <select required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm">
               <option value="">Select destination</option>
               <option>United States of America</option>
               <option>United Kingdom</option>
@@ -1356,9 +139,9 @@
               <option>Netherlands</option>
             </select>
           </div>
-          <div class="field">
-            <label>Loan amount required</label>
-            <select required>
+          <div class="mb-3.5">
+            <label class="block text-[11.5px] uppercase tracking-wider text-neutral-400 font-mono mb-1.5">Loan amount required</label>
+            <select required class="w-full px-3.5 py-3 bg-white/10 border border-white/20 rounded text-white text-sm">
               <option value="">Select range</option>
               <option>Below ₹20 Lakh</option>
               <option>₹20–40 Lakh</option>
@@ -1366,328 +149,146 @@
               <option>₹75 Lakh +</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-on-dark">
+          <button type="submit" class="w-full mt-2 inline-flex items-center justify-center gap-2.5 font-semibold text-sm px-7 py-4 rounded-sm bg-white text-neutral-900 hover:bg-gold transition-all hover:-translate-y-0.5">
             Apply now &amp; get a free callback →
           </button>
-          <div class="fine">
+          <div class="text-[11px] text-neutral-500 mt-3 leading-relaxed">
             By submitting, you agree to our Terms and Privacy Policy, and
             consent to receive updates via call, email or WhatsApp.
           </div>
         </form>
       </div>
 
-      <div class="scroll-cue">
-        <div class="line"></div>
+      <div class="absolute bottom-8 left-8 z-10 flex items-center gap-3 text-neutral-400 font-mono text-[11px] tracking-widest">
+        <div class="w-px h-9 bg-gradient-to-b from-gold to-transparent animate-cue"></div>
         SCROLL
       </div>
     </section>
 
     <!-- ============ STAT BAND ============ -->
-    <section class="stat-band">
-      <div class="container stat-grid">
-        <div class="stat-item">
-          <div class="stat-num" data-count="35000" data-suffix="+">0</div>
-          <div class="stat-label">Study abroad loans sanctioned</div>
+    <section class="bg-white border-y border-neutral-200 py-12">
+      <div class="max-w-[1180px] mx-auto px-8 grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="border-l border-neutral-200 pl-5">
+          <div class="stat-num font-mono text-3xl sm:text-4xl font-bold text-neutral-900" data-count="35000" data-suffix="+">0</div>
+          <div class="text-[13px] text-neutral-500 mt-1.5">Study abroad loans sanctioned</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num" data-count="11000" data-suffix=" Cr+">0</div>
-          <div class="stat-label">Disbursed to students</div>
+        <div class="border-l border-neutral-200 pl-5">
+          <div class="stat-num font-mono text-3xl sm:text-4xl font-bold text-neutral-900" data-count="11000" data-suffix=" Cr+">0</div>
+          <div class="text-[13px] text-neutral-500 mt-1.5">Disbursed to students</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-num" data-count="20" data-suffix="+">0</div>
-          <div class="stat-label">Bank &amp; NBFC lending partners</div>
+        <div class="border-l border-neutral-200 pl-5">
+          <div class="stat-num font-mono text-3xl sm:text-4xl font-bold text-neutral-900" data-count="20" data-suffix="+">0</div>
+          <div class="text-[13px] text-neutral-500 mt-1.5">Bank &amp; NBFC lending partners</div>
         </div>
-        <div class="stat-item">
-          <div
-            class="stat-num"
-            data-count="9"
-            data-decimal="true"
-            data-suffix="%"
-          >
-            0
-          </div>
-          <div class="stat-label">Interest rates starting from</div>
+        <div class="border-l border-neutral-200 pl-5">
+          <div class="stat-num font-mono text-3xl sm:text-4xl font-bold text-neutral-900" data-count="9" data-decimal="true" data-suffix="%">0</div>
+          <div class="text-[13px] text-neutral-500 mt-1.5">Interest rates starting from</div>
         </div>
       </div>
     </section>
 
-    <!-- ============ WHY MERIDIAN ============ -->
-    <section class="pad" id="why">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Why Students Trust Meridian</div>
-          <h2 class="h2">More than a loan — a complete funding partner.</h2>
-          <p class="lede" style="margin-top: 16px">
+    <!-- ============ WHY GDFCONE ============ -->
+    <section id="why" class="py-24 sm:py-32">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Why Students Trust GDFCone
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">More than a loan — a complete funding partner.</h2>
+          <p class="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-[60ch] mt-4">
             Your education abroad shouldn't be held back by financing. We built
-            Meridian around the moments that actually slow students down.
+            GDFCone around the moments that actually slow students down.
           </p>
         </div>
       </div>
-      <div class="container">
-        <div class="feat-grid">
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <rect x="3" y="7" width="18" height="13" rx="1" />
-              <path d="M8 7V5a4 4 0 0 1 8 0v2" />
-            </svg>
-            <span class="feat-num">01</span>
-            <h3>Unsecured loans, no collateral</h3>
-            <p>
-              Collateral-free financing up to ₹75 Lakh for eligible profiles at
-              ranked universities — no property, FD, or insurance pledge needed.
-            </p>
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1" /><path d="M8 7V5a4 4 0 0 1 8 0v2" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">01</span>
+            <h3 class="text-lg font-semibold mb-2.5">Unsecured loans, no collateral</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Collateral-free financing up to ₹75 Lakh for eligible profiles at ranked universities — no property, FD, or insurance pledge needed.</p>
           </div>
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path d="M12 2v20M2 12h20" />
-              <circle cx="12" cy="12" r="9" />
-            </svg>
-            <span class="feat-num">02</span>
-            <h3>100% tuition + living cost cover</h3>
-            <p>
-              We structure loans to cover tuition, accommodation, travel,
-              insurance, and study equipment — not just the fee slip.
-            </p>
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M2 12h20" /><circle cx="12" cy="12" r="9" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">02</span>
+            <h3 class="text-lg font-semibold mb-2.5">100% tuition + living cost cover</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">We structure loans to cover tuition, accommodation, travel, insurance, and study equipment — not just the fee slip.</p>
           </div>
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path d="M22 2L11 13" />
-              <path d="M22 2l-7 20-4-9-9-4 20-7z" />
-            </svg>
-            <span class="feat-num">03</span>
-            <h3>Pre-admission &amp; pre-visa disbursement</h3>
-            <p>
-              Funds released exactly when you need them — before admission,
-              before your visa interview, or at fee-payment time.
-            </p>
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2L11 13" /><path d="M22 2l-7 20-4-9-9-4 20-7z" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">03</span>
+            <h3 class="text-lg font-semibold mb-2.5">Pre-admission &amp; pre-visa disbursement</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Funds released exactly when you need them — before admission, before your visa interview, or at fee-payment time.</p>
           </div>
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <path d="M3 10h18M8 2v4M16 2v4" />
-            </svg>
-            <span class="feat-num">04</span>
-            <h3>Flexible repayment &amp; moratorium</h3>
-            <p>
-              Moratorium through your course plus 6–12 months after, with
-              simple-interest, income-based, or interest-only repayment options.
-            </p>
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 10h18M8 2v4M16 2v4" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">04</span>
+            <h3 class="text-lg font-semibold mb-2.5">Flexible repayment &amp; moratorium</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Moratorium through your course plus 6–12 months after, with simple-interest, income-based, or interest-only repayment options.</p>
           </div>
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z" />
-            </svg>
-            <span class="feat-num">05</span>
-            <h3>Fully digital, 7–15 day process</h3>
-            <p>
-              Upload documents securely online. Clean files with our partner
-              NBFCs move from submission to sanction in as little as a week.
-            </p>
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">05</span>
+            <h3 class="text-lg font-semibold mb-2.5">Fully digital, 7–15 day process</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">Upload documents securely online. Clean files with our partner NBFCs move from submission to sanction in as little as a week.</p>
           </div>
-          <div class="feat-card reveal">
-            <svg
-              class="feat-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <circle cx="12" cy="8" r="4" />
-              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-            </svg>
-            <span class="feat-num">06</span>
-            <h3>A real loan expert, not a call centre</h3>
-            <p>
-              One dedicated advisor understands your course, country and
-              financial background, and stays with you through disbursal.
-            </p>
+          <div class="reveal bg-white p-9 hover:bg-neutral-50 transition-colors">
+            <svg class="w-8 h-8 mb-5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" /></svg>
+            <span class="block font-mono text-xs text-gold mb-1">06</span>
+            <h3 class="text-lg font-semibold mb-2.5">A real loan expert, not a call centre</h3>
+            <p class="text-sm text-neutral-500 leading-relaxed">One dedicated advisor understands your course, country and financial background, and stays with you through disbursal.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ COMPARE LOAN TYPES ============ -->
-    <section class="pad bg-off">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Secured vs Unsecured</div>
-          <h2 class="h2">Pick the funding path that fits your profile.</h2>
-          <p class="lede" style="margin-top: 16px">
+    <section class="py-24 sm:py-32 bg-neutral-50">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Secured vs Unsecured
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Pick the funding path that fits your profile.</h2>
+          <p class="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-[60ch] mt-4">
             Rate is only one part of the decision. Processing speed, loan
             ceiling and disbursement currency matter just as much when a tuition
             deadline is on the line.
           </p>
         </div>
-        <div class="compare-grid">
-          <div class="compare-card reveal">
-            <span class="compare-tag">Collateral-backed</span>
-            <h3>Public Sector Banks</h3>
-            <div class="compare-rate">8–11%</div>
-            <ul class="compare-list">
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Lowest available interest rates
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Longer repayment tenures
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Requires property, FD or insurance
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Sanction in 4–6 weeks
-              </li>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="reveal relative bg-white border border-neutral-200 p-9 transition-all hover:-translate-y-1.5 hover:shadow-xl">
+            <span class="absolute -top-3 left-7 bg-neutral-900 text-white font-mono text-[10.5px] px-3 py-1.5 tracking-wide">Collateral-backed</span>
+            <h3 class="text-xl font-semibold mt-1.5 mb-1">Public Sector Banks</h3>
+            <div class="font-mono text-2xl text-neutral-900 my-3.5">8–11%</div>
+            <ul class="mt-4">
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Lowest available interest rates</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Longer repayment tenures</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Requires property, FD or insurance</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Sanction in 4–6 weeks</li>
             </ul>
           </div>
-          <div class="compare-card hi reveal">
-            <span class="compare-tag">Most popular</span>
-            <h3>Private NBFCs</h3>
-            <div class="compare-rate">9.5–14%</div>
-            <ul class="compare-list">
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Collateral-free up to ₹75L+
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Digital, sanction in 7–15 days
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Broader eligibility criteria
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Slightly higher rate than banks
-              </li>
+          <div class="reveal relative bg-white border border-blue-800 p-9 shadow-xl transition-all hover:-translate-y-1.5">
+            <span class="absolute -top-3 left-7 bg-blue-800 text-white font-mono text-[10.5px] px-3 py-1.5 tracking-wide">Most popular</span>
+            <h3 class="text-xl font-semibold mt-1.5 mb-1">Private NBFCs</h3>
+            <div class="font-mono text-2xl text-blue-800 my-3.5">9.5–14%</div>
+            <ul class="mt-4">
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-blue-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Collateral-free up to ₹75L+</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-blue-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Digital, sanction in 7–15 days</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-blue-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Broader eligibility criteria</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-blue-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Slightly higher rate than banks</li>
             </ul>
           </div>
-          <div class="compare-card reveal">
-            <span class="compare-tag">USD-denominated</span>
-            <h3>International Lenders</h3>
-            <div class="compare-rate">SOFR +</div>
-            <ul class="compare-list">
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Disburses direct to university in USD
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >No forex conversion delay
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >Best suited to US-based programmes
-              </li>
-              <li>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 6L9 17l-5-5" /></svg
-                >May not need an Indian co-applicant
-              </li>
+          <div class="reveal relative bg-white border border-neutral-200 p-9 transition-all hover:-translate-y-1.5 hover:shadow-xl">
+            <span class="absolute -top-3 left-7 bg-neutral-900 text-white font-mono text-[10.5px] px-3 py-1.5 tracking-wide">USD-denominated</span>
+            <h3 class="text-xl font-semibold mt-1.5 mb-1">International Lenders</h3>
+            <div class="font-mono text-2xl text-neutral-900 my-3.5">SOFR +</div>
+            <ul class="mt-4">
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Disburses direct to university in USD</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>No forex conversion delay</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>Best suited to US-based programmes</li>
+              <li class="flex gap-2.5 text-sm text-neutral-500 py-2 border-t border-neutral-200"><svg class="w-3.5 h-3.5 flex-none mt-0.5 text-neutral-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" /></svg>May not need an Indian co-applicant</li>
             </ul>
           </div>
         </div>
@@ -1695,95 +296,83 @@
     </section>
 
     <!-- ============ ELIGIBILITY TOOL ============ -->
-    <section class="pad" id="eligibility">
-      <div class="container">
-        <div class="elig-wrap">
-          <div class="elig-tool reveal">
-            <div class="eyebrow on-dark">Two-Minute Check</div>
-            <h3>See where you're likely to stand</h3>
-            <div class="elig-row">
-              <label>Course type</label>
-              <div class="chip-set" data-group="course">
-                <div class="chip">STEM Master's</div>
-                <div class="chip">MBA / Management</div>
-                <div class="chip">Undergraduate</div>
-                <div class="chip">Other PG</div>
+    <section id="eligibility" class="py-24 sm:py-32">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div class="reveal bg-neutral-900 text-white p-9 sm:p-10 rounded-md">
+            <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-400 mb-4">
+              <span class="w-6 h-px bg-gold"></span>Two-Minute Check
+            </div>
+            <h3 class="text-white text-xl font-semibold mb-6">See where you're likely to stand</h3>
+
+            <div class="mb-5">
+              <label class="block text-xs uppercase tracking-wider text-neutral-400 font-mono mb-2">Course type</label>
+              <div class="flex flex-wrap gap-2" data-group="course">
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">STEM Master's</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">MBA / Management</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Undergraduate</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Other PG</div>
               </div>
             </div>
-            <div class="elig-row">
-              <label>Admission status</label>
-              <div class="chip-set" data-group="admit">
-                <div class="chip">Unconditional offer</div>
-                <div class="chip">Conditional offer</div>
-                <div class="chip">Still applying</div>
+            <div class="mb-5">
+              <label class="block text-xs uppercase tracking-wider text-neutral-400 font-mono mb-2">Admission status</label>
+              <div class="flex flex-wrap gap-2" data-group="admit">
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Unconditional offer</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Conditional offer</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Still applying</div>
               </div>
             </div>
-            <div class="elig-row">
-              <label>Co-applicant's CIBIL score</label>
-              <div class="chip-set" data-group="cibil">
-                <div class="chip">750+</div>
-                <div class="chip">700–750</div>
-                <div class="chip">Below 700</div>
-                <div class="chip">Not sure</div>
+            <div class="mb-5">
+              <label class="block text-xs uppercase tracking-wider text-neutral-400 font-mono mb-2">Co-applicant's CIBIL score</label>
+              <div class="flex flex-wrap gap-2" data-group="cibil">
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">750+</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">700–750</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Below 700</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Not sure</div>
               </div>
             </div>
-            <div class="elig-row">
-              <label>Can you offer collateral?</label>
-              <div class="chip-set" data-group="collateral">
-                <div class="chip">Yes</div>
-                <div class="chip">No</div>
+            <div class="mb-6">
+              <label class="block text-xs uppercase tracking-wider text-neutral-400 font-mono mb-2">Can you offer collateral?</label>
+              <div class="flex flex-wrap gap-2" data-group="collateral">
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">Yes</div>
+                <div class="chip px-4 py-2 border border-white/25 rounded-full text-[13px] cursor-pointer text-neutral-200 bg-white/5 hover:bg-white/10 transition-colors">No</div>
               </div>
             </div>
-            <button
-              class="btn btn-on-dark"
-              id="eligBtn"
-              style="width: 100%; margin-top: 6px"
-            >
+            <button id="eligBtn" class="w-full font-semibold text-sm px-7 py-4 rounded-sm bg-white text-neutral-900 hover:bg-gold transition-all hover:-translate-y-0.5">
               Check my eligibility
             </button>
-            <div id="elig-result"></div>
+            <div id="elig-result" class="hidden mt-6 px-5 py-4 rounded bg-white/10 border border-white/15 text-[14px] text-neutral-200 leading-relaxed"></div>
           </div>
 
-          <div class="elig-side">
-            <div class="eyebrow">How the check works</div>
-            <h2
-              class="h2"
-              style="font-size: clamp(26px, 3vw, 34px); margin-bottom: 8px"
-            >
-              From profile to personal loan plan.
-            </h2>
-            <p class="lede" style="margin-bottom: 10px">
+          <div>
+            <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+              <span class="w-6 h-px bg-gold"></span>How the check works
+            </div>
+            <h2 class="font-serif font-semibold text-2xl sm:text-4xl leading-tight mb-2">From profile to personal loan plan.</h2>
+            <p class="text-base text-neutral-500 leading-relaxed mb-2.5">
               A real advisor still reviews every case — this tool simply tells
               you where you're likely to land before that first call.
             </p>
-            <ol>
-              <li>
-                <h4>Share your profile</h4>
-                <p>
-                  Course, country, admission status and co-applicant financials
-                  — no hard credit enquiry involved.
-                </p>
+            <ol class="mt-1.5">
+              <li class="relative pl-12 py-5 border-b border-neutral-200">
+                <span class="absolute left-0 top-5 font-mono text-[13px] font-bold text-neutral-900">01</span>
+                <h4 class="text-[15.5px] font-semibold mb-1">Share your profile</h4>
+                <p class="text-[13.8px] text-neutral-500">Course, country, admission status and co-applicant financials — no hard credit enquiry involved.</p>
               </li>
-              <li>
-                <h4>We match you to lenders</h4>
-                <p>
-                  Your profile is weighed against our partner banks' and NBFCs'
-                  live approval criteria.
-                </p>
+              <li class="relative pl-12 py-5 border-b border-neutral-200">
+                <span class="absolute left-0 top-5 font-mono text-[13px] font-bold text-neutral-900">02</span>
+                <h4 class="text-[15.5px] font-semibold mb-1">We match you to lenders</h4>
+                <p class="text-[13.8px] text-neutral-500">Your profile is weighed against our partner banks' and NBFCs' live approval criteria.</p>
               </li>
-              <li>
-                <h4>An advisor calls you</h4>
-                <p>
-                  One dedicated expert walks you through the best-fit options —
-                  with or without collateral.
-                </p>
+              <li class="relative pl-12 py-5 border-b border-neutral-200">
+                <span class="absolute left-0 top-5 font-mono text-[13px] font-bold text-neutral-900">03</span>
+                <h4 class="text-[15.5px] font-semibold mb-1">An advisor calls you</h4>
+                <p class="text-[13.8px] text-neutral-500">One dedicated expert walks you through the best-fit options — with or without collateral.</p>
               </li>
-              <li>
-                <h4>You compare real offers</h4>
-                <p>
-                  See interest rate, tenure and disbursement terms side by side
-                  before committing to anything.
-                </p>
+              <li class="relative pl-12 py-5 border-b border-neutral-200">
+                <span class="absolute left-0 top-5 font-mono text-[13px] font-bold text-neutral-900">04</span>
+                <h4 class="text-[15.5px] font-semibold mb-1">You compare real offers</h4>
+                <p class="text-[13.8px] text-neutral-500">See interest rate, tenure and disbursement terms side by side before committing to anything.</p>
               </li>
             </ol>
           </div>
@@ -1791,479 +380,293 @@
       </div>
     </section>
 
-    <!-- ============ JOURNEY (signature parallax) ============ -->
-    <section class="journey" id="journey">
-      <div class="container">
-        <div class="section-head center" style="margin-bottom: 90px">
-          <div class="eyebrow" style="justify-content: center">
-            Your Study Abroad Loan Journey
+    <!-- ============ JOURNEY ============ -->
+    <section id="journey" class="pt-24 sm:pt-32 pb-16 bg-neutral-50">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mx-auto text-center mb-24">
+          <div class="flex items-center justify-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Your Study Abroad Loan Journey<span class="w-6 h-px bg-gold"></span>
           </div>
-          <h2 class="h2">From dreaming big to touchdown.</h2>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">From dreaming big to touchdown.</h2>
         </div>
       </div>
 
-      <div class="journey-path-wrap">
-        <svg
-          class="journey-svg"
-          preserveAspectRatio="none"
-          viewBox="0 0 2 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line
-            x1="1"
-            y1="0"
-            x2="1"
-            y2="100"
-            class="journey-line-bg"
-            vector-effect="non-scaling-stroke"
-          />
-          <line
-            id="journeyFg"
-            x1="1"
-            y1="0"
-            x2="1"
-            y2="100"
-            class="journey-line-fg"
-            vector-effect="non-scaling-stroke"
-            stroke-dasharray="100"
-            stroke-dashoffset="100"
-          />
+      <div class="relative max-w-[900px] mx-auto">
+        <svg class="absolute left-3.5 md:left-1/2 top-0 md:-translate-x-1/2 w-0.5 h-full" preserveAspectRatio="none" viewBox="0 0 2 100" xmlns="http://www.w3.org/2000/svg">
+          <line x1="1" y1="0" x2="1" y2="100" stroke="#e3e6ec" stroke-width="2" vector-effect="non-scaling-stroke" />
+          <line id="journeyFg" x1="1" y1="0" x2="1" y2="100" class="journey-line-fg" stroke="#171717" stroke-width="2" vector-effect="non-scaling-stroke" />
         </svg>
-        <svg
-          class="journey-plane"
-          id="journeyPlane"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13L2 16.5Z"
-            fill="#0a1f44"
-          />
+        <svg id="journeyPlane" class="absolute w-7 h-7 left-3.5 md:left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-[3] text-neutral-900" viewBox="0 0 24 24" fill="none">
+          <path d="M2 16.5L22 12L2 7.5L2 11L14 12L2 13L2 16.5Z" fill="currentColor" />
         </svg>
 
-        <div class="j-step">
-          <div class="j-card">
-            <span class="j-tag">01</span>
-            <h4>You're dreaming big</h4>
-            <p>
-              You've decided — studying abroad is next. You're researching
-              courses, countries, and picturing life on a new campus.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-1 md:justify-self-end md:text-right">
+            <span class="block font-mono text-[11px] text-gold mb-2">01</span>
+            <h4 class="text-lg font-semibold mb-2">You're dreaming big</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">You've decided — studying abroad is next. You're researching courses, countries, and picturing life on a new campus.</p>
           </div>
-          <div class="j-node"></div>
-          <div></div>
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
         </div>
-        <div class="j-step">
-          <div></div>
-          <div class="j-node"></div>
-          <div class="j-card">
-            <span class="j-tag">02</span>
-            <h4>You start exploring options</h4>
-            <p>
-              You compare education loans online and land on Meridian. A short
-              form — a few minutes, nothing more.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-3">
+            <span class="block font-mono text-[11px] text-gold mb-2">02</span>
+            <h4 class="text-lg font-semibold mb-2">You start exploring options</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">You compare education loans online and land on GDFCone. A short form — a few minutes, nothing more.</p>
           </div>
         </div>
-        <div class="j-step">
-          <div class="j-card">
-            <span class="j-tag">03</span>
-            <h4>We reach out personally</h4>
-            <p>
-              A loan expert calls you. No bots, no scripts — a real conversation
-              about your goals and finances.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-1 md:justify-self-end md:text-right">
+            <span class="block font-mono text-[11px] text-gold mb-2">03</span>
+            <h4 class="text-lg font-semibold mb-2">We reach out personally</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">A loan expert calls you. No bots, no scripts — a real conversation about your goals and finances.</p>
           </div>
-          <div class="j-node"></div>
-          <div></div>
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
         </div>
-        <div class="j-step">
-          <div></div>
-          <div class="j-node"></div>
-          <div class="j-card">
-            <span class="j-tag">04</span>
-            <h4>We craft a plan for you</h4>
-            <p>
-              Based on your course, country and financial background, we
-              shortlist the best-fit lenders — with or without collateral.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-3">
+            <span class="block font-mono text-[11px] text-gold mb-2">04</span>
+            <h4 class="text-lg font-semibold mb-2">We craft a plan for you</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Based on your course, country and financial background, we shortlist the best-fit lenders — with or without collateral.</p>
           </div>
         </div>
-        <div class="j-step">
-          <div class="j-card">
-            <span class="j-tag">05</span>
-            <h4>You submit documents digitally</h4>
-            <p>
-              No back-and-forth paperwork. Upload the essentials securely,
-              entirely online, at your convenience.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-1 md:justify-self-end md:text-right">
+            <span class="block font-mono text-[11px] text-gold mb-2">05</span>
+            <h4 class="text-lg font-semibold mb-2">You submit documents digitally</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">No back-and-forth paperwork. Upload the essentials securely, entirely online, at your convenience.</p>
           </div>
-          <div class="j-node"></div>
-          <div></div>
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
         </div>
-        <div class="j-step">
-          <div></div>
-          <div class="j-node"></div>
-          <div class="j-card">
-            <span class="j-tag">06</span>
-            <h4>Your loan gets approved</h4>
-            <p>
-              We process your file quickly and transparently. A sanction letter
-              lands, ready to support your visa application.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-3">
+            <span class="block font-mono text-[11px] text-gold mb-2">06</span>
+            <h4 class="text-lg font-semibold mb-2">Your loan gets approved</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">We process your file quickly and transparently. A sanction letter lands, ready to support your visa application.</p>
           </div>
         </div>
-        <div class="j-step">
-          <div class="j-card">
-            <span class="j-tag">07</span>
-            <h4>Funds are released when needed</h4>
-            <p>
-              Before your visa, before admission, or at fee-payment time — funds
-              move exactly when they matter most.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 pb-8 md:pl-0 md:pb-0">
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-1 md:justify-self-end md:text-right">
+            <span class="block font-mono text-[11px] text-gold mb-2">07</span>
+            <h4 class="text-lg font-semibold mb-2">Funds are released when needed</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Before your visa, before admission, or at fee-payment time — funds move exactly when they matter most.</p>
           </div>
-          <div class="j-node"></div>
-          <div></div>
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
         </div>
-        <div class="j-step">
-          <div></div>
-          <div class="j-node"></div>
-          <div class="j-card">
-            <span class="j-tag">08</span>
-            <h4>You're ready to take off</h4>
-            <p>
-              Loan sorted, seat confirmed. Now you focus on packing bags — and
-              living the plan you worked so hard for.
-            </p>
+        <div class="relative grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] items-center min-h-[150px] pl-10 md:pl-0">
+          <div class="absolute left-2 md:static md:col-start-2 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900 justify-self-center z-[2]"></div>
+          <div class="j-card opacity-0 translate-y-8 bg-white border border-neutral-200 p-7 max-w-[380px] md:col-start-3">
+            <span class="block font-mono text-[11px] text-gold mb-2">08</span>
+            <h4 class="text-lg font-semibold mb-2">You're ready to take off</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Loan sorted, seat confirmed. Now you focus on packing bags — and living the plan you worked so hard for.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ DOCUMENTS ============ -->
-    <section class="pad bg-off">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Get Document-Ready</div>
-          <h2 class="h2">What you'll need before you apply.</h2>
-          <p class="lede" style="margin-top: 16px">
+    <section class="py-24 sm:py-32">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Get Document-Ready
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">What you'll need before you apply.</h2>
+          <p class="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-[60ch] mt-4">
             Incomplete files are the single largest cause of delay. Prepare
             these in advance and keep spellings consistent across every
             document.
           </p>
         </div>
-        <div class="doc-grid">
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path
-                d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-              />
-              <path d="M14 2v6h6" /></svg
-            ><span>University offer letter</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>
+            <span class="text-sm">University offer letter</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <rect x="4" y="3" width="16" height="18" rx="2" />
-              <circle cx="12" cy="10" r="3" /></svg
-            ><span>Passport, valid 18+ months</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2" /><circle cx="12" cy="10" r="3" /></svg>
+            <span class="text-sm">Passport, valid 18+ months</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" />
-              <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" /></svg
-            ><span>10th, 12th &amp; UG mark sheets</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z" /><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" /></svg>
+            <span class="text-sm">10th, 12th &amp; UG mark sheets</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M9 11l3 3L22 4" />
-              <path
-                d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
-              /></svg
-            ><span>GRE / GMAT / IELTS scores</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+            <span class="text-sm">GRE / GMAT / IELTS scores</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path
-                d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-              /></svg
-            ><span>Co-applicant's ITR, last 3 years</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+            <span class="text-sm">Co-applicant's ITR, last 3 years</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <rect x="2" y="7" width="20" height="14" rx="2" />
-              <path d="M2 10h20" /></svg
-            ><span>Co-applicant's salary slips, 6 months</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M2 10h20" /></svg>
+            <span class="text-sm">Co-applicant's salary slips, 6 months</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M3 3v18h18" />
-              <path d="M7 15l4-6 3 4 5-8" /></svg
-            ><span>Bank statements, 12 months</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18" /><path d="M7 15l4-6 3 4 5-8" /></svg>
+            <span class="text-sm">Bank statements, 12 months</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <path d="M7 8h.01M7 12h.01M11 8h6M11 12h6" /></svg
-            ><span>KYC — PAN &amp; Aadhaar</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 8h.01M7 12h.01M11 8h6M11 12h6" /></svg>
+            <span class="text-sm">KYC — PAN &amp; Aadhaar</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path d="M3 12l9-9 9 9M5 10v10h14V10" /></svg
-            ><span>Property documents (if collateral loan)</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10" /></svg>
+            <span class="text-sm">Property documents (if collateral loan)</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path
-                d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
-              /></svg
-            ><span>University fee structure</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" /></svg>
+            <span class="text-sm">University fee structure</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 7v5l3 2" /></svg
-            ><span>Gap certificate, if applicable</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+            <span class="text-sm">Gap certificate, if applicable</span>
           </div>
-          <div class="doc-item">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            >
-              <path
-                d="M11 2L3 7v6c0 5 3.6 8.7 8 9 4.4-.3 8-4 8-9V7l-8-5z"
-              /></svg
-            ><span>Scholarship letter, if applicable</span>
+          <div class="doc-item flex gap-3.5 items-start py-4 border-b border-neutral-200">
+            <svg class="w-[18px] h-[18px] text-neutral-900 flex-none mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 2L3 7v6c0 5 3.6 8.7 8 9 4.4-.3 8-4 8-9V7l-8-5z" /></svg>
+            <span class="text-sm">Scholarship letter, if applicable</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ DESTINATIONS ============ -->
-    <section class="pad" id="destinations">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Where Will You Study</div>
-          <h2 class="h2">Tailor-made loans, wherever your degree takes you.</h2>
+    <section id="destinations" class="py-24 sm:py-32 bg-neutral-50">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Where Will You Study
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Tailor-made loans, wherever your degree takes you.</h2>
         </div>
-        <div class="dest-grid">
-          <div class="dest-card reveal">
-            <div class="dest-flag">USA</div>
-            <h4>United States</h4>
-            <p>
-              Globally respected degrees and a rich, multi-cultural campus
-              environment.
-            </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">USA</div>
+            <h4 class="text-lg font-semibold mb-1">United States</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Globally respected degrees and a rich, multi-cultural campus environment.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">CANADA</div>
-            <h4>Canada</h4>
-            <p>
-              Consistently ranked among the top destinations for international
-              students.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">CANADA</div>
+            <h4 class="text-lg font-semibold mb-1">Canada</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Consistently ranked among the top destinations for international students.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">GERMANY</div>
-            <h4>Germany</h4>
-            <p>
-              14,500+ degree programmes across 400+ institutions, low tuition
-              costs.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">GERMANY</div>
+            <h4 class="text-lg font-semibold mb-1">Germany</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">14,500+ degree programmes across 400+ institutions, low tuition costs.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">UK</div>
-            <h4>United Kingdom</h4>
-            <p>
-              Over 500,000 international students enrol yearly for world-class
-              research.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">UK</div>
+            <h4 class="text-lg font-semibold mb-1">United Kingdom</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Over 500,000 international students enrol yearly for world-class research.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">IRELAND</div>
-            <h4>Ireland</h4>
-            <p>
-              Renowned academic standards with a vast range of fields to choose
-              from.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">IRELAND</div>
+            <h4 class="text-lg font-semibold mb-1">Ireland</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Renowned academic standards with a vast range of fields to choose from.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">AUS</div>
-            <h4>Australia</h4>
-            <p>
-              Home to Melbourne and Sydney — world-class education, exceptional
-              living.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">AUS</div>
+            <h4 class="text-lg font-semibold mb-1">Australia</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Home to Melbourne and Sydney — world-class education, exceptional living.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">SGP</div>
-            <h4>Singapore</h4>
-            <p>
-              Notable, esteemed institutions offering high standards of
-              teaching.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">SGP</div>
+            <h4 class="text-lg font-semibold mb-1">Singapore</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Notable, esteemed institutions offering high standards of teaching.</p>
           </div>
-          <div class="dest-card reveal">
-            <div class="dest-flag">NZ</div>
-            <h4>New Zealand</h4>
-            <p>
-              Deep expertise and support services built around international
-              students.
-            </p>
+          <div class="reveal relative h-56 p-5 flex flex-col justify-end bg-neutral-900 text-white overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+            <div class="font-mono text-[11px] tracking-wide text-gold mb-2">NZ</div>
+            <h4 class="text-lg font-semibold mb-1">New Zealand</h4>
+            <p class="text-xs text-neutral-400 leading-relaxed">Deep expertise and support services built around international students.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ LOAN OVERVIEW ============ -->
-    <section class="pad bg-off">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Loan Overview</div>
-          <h2 class="h2">Transparent terms, no surprises.</h2>
+    <section class="py-24 sm:py-32">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Loan Overview
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Transparent terms, no surprises.</h2>
         </div>
-        <div class="overview-grid">
-          <div class="ov-card reveal">
-            <div class="ov-num">10 yrs</div>
-            <h4>Repayment tenure</h4>
-            <p>
-              Loan repayment periods extend up to ten years, structured around
-              your expected post-study income.
-            </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-neutral-200 border border-neutral-200">
+          <div class="reveal bg-white p-11">
+            <div class="font-mono text-4xl text-neutral-900 mb-3.5">10 yrs</div>
+            <h4 class="text-sm uppercase tracking-wide text-neutral-500 font-semibold mb-2.5">Repayment tenure</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Loan repayment periods extend up to ten years, structured around your expected post-study income.</p>
           </div>
-          <div class="ov-card reveal">
-            <div class="ov-num">9.5%+</div>
-            <h4>Interest rate range</h4>
-            <p>
-              Starting from 9.5% p.a., with the final rate shaped by your
-              lender, course, and co-applicant profile.
-            </p>
+          <div class="reveal bg-white p-11">
+            <div class="font-mono text-4xl text-neutral-900 mb-3.5">9.5%+</div>
+            <h4 class="text-sm uppercase tracking-wide text-neutral-500 font-semibold mb-2.5">Interest rate range</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Starting from 9.5% p.a., with the final rate shaped by your lender, course, and co-applicant profile.</p>
           </div>
-          <div class="ov-card reveal">
-            <div class="ov-num">≤2%</div>
-            <h4>Processing fee</h4>
-            <p>
-              Included within the Annual Percentage Rate alongside interest,
-              shown separately from illustrative examples for full transparency.
-            </p>
+          <div class="reveal bg-white p-11">
+            <div class="font-mono text-4xl text-neutral-900 mb-3.5">≤2%</div>
+            <h4 class="text-sm uppercase tracking-wide text-neutral-500 font-semibold mb-2.5">Processing fee</h4>
+            <p class="text-[13.8px] text-neutral-500 leading-relaxed">Included within the Annual Percentage Rate alongside interest, shown separately from illustrative examples for full transparency.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ APPLY EARLY TIMELINE ============ -->
-    <section class="pad">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Timing Matters</div>
-          <h2 class="h2">Start earlier than you think you need to.</h2>
-          <p class="lede" style="margin-top: 16px">
+    <section class="py-24 sm:py-32 bg-neutral-50">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Timing Matters
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Start earlier than you think you need to.</h2>
+          <p class="text-base sm:text-lg text-neutral-500 leading-relaxed max-w-[60ch] mt-4">
             Most students begin after their offer letter arrives — that's
             already late. For a September intake, start no later than April,
             ideally February.
           </p>
         </div>
-        <div class="timeline-wrap">
-          <div class="timeline">
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>FEB</h5>
-              <p>
-                Check eligibility, shortlist lenders, begin document collection.
-              </p>
+        <div class="overflow-x-auto pb-2.5">
+          <div class="relative flex min-w-[900px] pt-10 before:content-[''] before:absolute before:top-2 before:left-0 before:right-0 before:h-px before:bg-neutral-200">
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">FEB</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Check eligibility, shortlist lenders, begin document collection.</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>MAR</h5>
-              <p>
-                Apply for pre-admission, in-principle loan approval where
-                offered.
-              </p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">MAR</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Apply for pre-admission, in-principle loan approval where offered.</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>APR</h5>
-              <p>
-                Submit complete files; compare at least three lender offers.
-              </p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">APR</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Submit complete files; compare at least three lender offers.</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>MAY</h5>
-              <p>
-                Bank sanction (4–6 wks) or NBFC digital sanction (7–15 days).
-              </p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">MAY</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Bank sanction (4–6 wks) or NBFC digital sanction (7–15 days).</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>JUN</h5>
-              <p>Disbursement coordination with your university begins.</p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">JUN</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Disbursement coordination with your university begins.</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>JUL</h5>
-              <p>Pre-visa disbursement proof ready for your visa interview.</p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">JUL</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Pre-visa disbursement proof ready for your visa interview.</p>
             </div>
-            <div class="t-item">
-              <div class="t-dot"></div>
-              <h5>SEP</h5>
-              <p>Funds disbursed, fees paid, and you're on campus.</p>
+            <div class="flex-1 relative px-4">
+              <div class="w-2.5 h-2.5 rounded-full bg-neutral-900 absolute top-1 left-4"></div>
+              <h5 class="font-mono text-xs text-neutral-900 mt-5 mb-2">SEP</h5>
+              <p class="text-[13.5px] text-neutral-500 leading-snug">Funds disbursed, fees paid, and you're on campus.</p>
             </div>
           </div>
         </div>
@@ -2271,52 +674,52 @@
     </section>
 
     <!-- ============ TESTIMONIALS ============ -->
-    <section class="pad bg-off">
-      <div class="container">
-        <div class="section-head center">
-          <div class="eyebrow" style="justify-content: center">
-            Student Success Stories
+    <section class="py-24 sm:py-32">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="max-w-[680px] mx-auto text-center mb-14">
+          <div class="flex items-center justify-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Student Success Stories<span class="w-6 h-px bg-gold"></span>
           </div>
-          <h2 class="h2">Real students. Real dreams. Real support.</h2>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Real students. Real dreams. Real support.</h2>
         </div>
-        <div class="testi-grid">
-          <div class="testi-card reveal">
-            <p class="quote">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="reveal bg-neutral-50 p-8 border-t-2 border-neutral-900">
+            <p class="font-serif text-[15px] leading-relaxed mb-6">
               "My sanction letter came through nine days before my visa
               interview. The advisor knew exactly which lender would move fast
               for a STEM offer."
             </p>
-            <div class="testi-who">
-              <div class="testi-avatar">RK</div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center font-mono text-[13px]">RK</div>
               <div>
-                <h5>Rohan Kapoor</h5>
-                <span>MS Computer Science, University of Toronto</span>
+                <h5 class="text-sm font-semibold">Rohan Kapoor</h5>
+                <span class="text-xs text-neutral-500">MS Computer Science, University of Toronto</span>
               </div>
             </div>
           </div>
-          <div class="testi-card reveal">
-            <p class="quote">
+          <div class="reveal bg-neutral-50 p-8 border-t-2 border-neutral-900">
+            <p class="font-serif text-[15px] leading-relaxed mb-6">
               "No collateral, no property paperwork. My parents were relieved
               they didn't have to mortgage anything for my degree."
             </p>
-            <div class="testi-who">
-              <div class="testi-avatar">SM</div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center font-mono text-[13px]">SM</div>
               <div>
-                <h5>Sanya Mehta</h5>
-                <span>MBA, Warwick Business School</span>
+                <h5 class="text-sm font-semibold">Sanya Mehta</h5>
+                <span class="text-xs text-neutral-500">MBA, Warwick Business School</span>
               </div>
             </div>
           </div>
-          <div class="testi-card reveal">
-            <p class="quote">
+          <div class="reveal bg-neutral-50 p-8 border-t-2 border-neutral-900">
+            <p class="font-serif text-[15px] leading-relaxed mb-6">
               "Everything happened over WhatsApp and one video call. I uploaded
               documents from my hostel room and never once visited a branch."
             </p>
-            <div class="testi-who">
-              <div class="testi-avatar">AV</div>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-neutral-900 text-white flex items-center justify-center font-mono text-[13px]">AV</div>
               <div>
-                <h5>Arjun Varma</h5>
-                <span>MEng, RWTH Aachen</span>
+                <h5 class="text-sm font-semibold">Arjun Varma</h5>
+                <span class="text-xs text-neutral-500">MEng, RWTH Aachen</span>
               </div>
             </div>
           </div>
@@ -2325,114 +728,85 @@
     </section>
 
     <!-- ============ FAQ ============ -->
-    <section class="pad" id="faq">
-      <div class="container" style="max-width: 840px">
-        <div class="section-head">
-          <div class="eyebrow">Got A Question</div>
-          <h2 class="h2">Answers, right here.</h2>
+    <section id="faq" class="py-24 sm:py-32 bg-neutral-50">
+      <div class="max-w-[840px] mx-auto px-8">
+        <div class="mb-14">
+          <div class="flex items-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-900 mb-4">
+            <span class="w-6 h-px bg-gold"></span>Got A Question
+          </div>
+          <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight">Answers, right here.</h2>
         </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-q">
-              Is there a processing fee on the education loan?<span
-                class="plus"
-              ></span>
+        <div>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              Is there a processing fee on the education loan?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Yes — depending on the loan amount, the lender may levy a
-                processing fee, typically up to 2%, included within the
-                disclosed Annual Percentage Rate.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Yes — depending on the loan amount, the lender may levy a processing fee, typically up to 2%, included within the disclosed Annual Percentage Rate.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              Who can apply for a Meridian-facilitated education loan?<span
-                class="plus"
-              ></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              Who can apply for a GDFCone-facilitated education loan?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Any Indian citizen who has secured — or is in the process of
-                securing — admission to a recognised institution in India or
-                abroad.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Any Indian citizen who has secured — or is in the process of securing — admission to a recognised institution in India or abroad.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              What is the minimum CIBIL score needed?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              What is the minimum CIBIL score needed?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Most lenders expect a co-applicant CIBIL score of at least 700
-                for smooth processing. A score above 750 improves both approval
-                speed and the rate offered. Below 680, select NBFCs still
-                consider applications based on income stability.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Most lenders expect a co-applicant CIBIL score of at least 700 for smooth processing. A score above 750 improves both approval speed and the rate offered. Below 680, select NBFCs still consider applications based on income stability.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              Can I get a loan without collateral?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              Can I get a loan without collateral?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Yes. Several NBFCs and specialised lenders offer unsecured loans
-                up to ₹40–75 Lakh depending on university ranking and course
-                employability, generally at a 1.5–3% higher rate than secured
-                loans.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Yes. Several NBFCs and specialised lenders offer unsecured loans up to ₹40–75 Lakh depending on university ranking and course employability, generally at a 1.5–3% higher rate than secured loans.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              How long does approval actually take?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              How long does approval actually take?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Digital-first NBFCs typically sanction in 7–15 working days for
-                clean files. Public sector banks usually take 4–6 weeks. Add 2–3
-                weeks for disbursement coordination with your university.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Digital-first NBFCs typically sanction in 7–15 working days for clean files. Public sector banks usually take 4–6 weeks. Add 2–3 weeks for disbursement coordination with your university.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              What expenses does the loan cover?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              What expenses does the loan cover?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Tuition, examination fees, living expenses, travel, insurance,
-                study equipment, and pre-admission costs — disbursed in tranches
-                aligned to your academic calendar, often direct to the
-                university in foreign currency.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Tuition, examination fees, living expenses, travel, insurance, study equipment, and pre-admission costs — disbursed in tranches aligned to your academic calendar, often direct to the university in foreign currency.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              Who can be my co-applicant?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              Who can be my co-applicant?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Typically a parent, sibling, parent-in-law or spouse — and with
-                certain NBFC partners, a wider circle of relatives than banks
-                usually permit.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Typically a parent, sibling, parent-in-law or spouse — and with certain NBFC partners, a wider circle of relatives than banks usually permit.</p>
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-q">
-              Do I repay while I'm still studying?<span class="plus"></span>
+          <div class="faq-item border-b border-neutral-200">
+            <div class="faq-q flex items-center justify-between py-6 cursor-pointer text-base sm:text-lg font-semibold font-serif gap-5">
+              Do I repay while I'm still studying?
+              <span class="faq-plus relative w-5 h-5 flex-none text-neutral-900"></span>
             </div>
-            <div class="faq-a">
-              <p>
-                Most lenders offer a moratorium covering your full course plus
-                6–12 months after. Simple interest accrues during this period;
-                paying it as you go reduces your total repayment burden.
-              </p>
+            <div class="faq-answer">
+              <p class="text-sm text-neutral-500 leading-relaxed pb-6 max-w-[75ch]">Most lenders offer a moratorium covering your full course plus 6–12 months after. Simple interest accrues during this period; paying it as you go reduces your total repayment burden.</p>
             </div>
           </div>
         </div>
@@ -2440,79 +814,72 @@
     </section>
 
     <!-- ============ CTA BAND ============ -->
-    <section class="cta-band">
-      <div
-        class="hero-layer hero-dots"
-        data-speed="0.2"
-        style="opacity: 0.5"
-      ></div>
-      <div class="container" style="position: relative; z-index: 2">
-        <div class="eyebrow on-dark" style="justify-content: center">
-          Ready When You Are
+    <section class="relative py-28 text-center bg-neutral-900 text-white overflow-hidden">
+      <div class="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none"></div>
+      <div class="relative z-10 max-w-[1180px] mx-auto px-8">
+        <div class="flex items-center justify-center gap-2.5 font-mono text-xs tracking-widest uppercase text-neutral-400 mb-4">
+          <span class="w-6 h-px bg-gold"></span>Ready When You Are<span class="w-6 h-px bg-gold"></span>
         </div>
-        <h2 class="h2">Let's get you closer to your dream university.</h2>
-        <p
-          class="lede"
-          style="color: #c4cee4; margin-left: auto; margin-right: auto"
-        >
+        <h2 class="font-serif font-semibold text-3xl sm:text-5xl leading-tight text-white mb-4">Let's get you closer to your dream university.</h2>
+        <p class="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-[56ch] mx-auto mb-9">
           Free eligibility check. Free expert callback. No obligation until
           you're ready to proceed.
         </p>
-        <div class="cta-actions">
-          <a href="#top" class="btn btn-on-dark">Get a Callback Now</a>
-          <a href="#eligibility" class="btn btn-line-dark">Check Eligibility</a>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#top" class="inline-flex items-center gap-2.5 font-semibold text-sm px-7 py-4 rounded-sm bg-white text-neutral-900 hover:bg-gold transition-all hover:-translate-y-0.5">Get a Callback Now</a>
+          <a href="#eligibility" class="inline-flex items-center gap-2.5 font-semibold text-sm px-7 py-4 rounded-sm bg-transparent text-white border border-white/35 hover:border-white transition-all hover:-translate-y-0.5">Check Eligibility</a>
         </div>
       </div>
     </section>
 
     <!-- ============ FOOTER ============ -->
-    <footer>
-      <div class="container">
-        <div class="foot-grid">
+    <footer class="bg-neutral-950 text-neutral-400 pt-16 pb-8">
+      <div class="max-w-[1180px] mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 pb-12 border-b border-white/10">
           <div>
-            <div class="foot-logo">Meridian</div>
-            <p>
-              Meridian is a facilitation and advisory platform for study abroad
+            <div class="font-serif text-xl text-white mb-3.5">GDFCone</div>
+            <p class="text-[13.5px] leading-relaxed text-neutral-500 max-w-[32ch]">
+              GDFCone is a facilitation and advisory platform for study abroad
               education loans. We are not a lender — all loans are sanctioned
               and disbursed solely by our RBI-regulated partner banks and NBFCs.
             </p>
           </div>
-          <div class="foot-col">
-            <h5>Loans by Country</h5>
+          <div>
+            <h5 class="text-xs uppercase tracking-wider text-neutral-500 font-mono mb-4">Loans by Country</h5>
             <ul>
-              <li><a href="#">Education Loan — USA</a></li>
-              <li><a href="#">Education Loan — UK</a></li>
-              <li><a href="#">Education Loan — Canada</a></li>
-              <li><a href="#">Education Loan — Germany</a></li>
-              <li><a href="#">Education Loan — Ireland</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Education Loan — USA</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Education Loan — UK</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Education Loan — Canada</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Education Loan — Germany</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Education Loan — Ireland</a></li>
             </ul>
           </div>
-          <div class="foot-col">
-            <h5>Resources</h5>
+          <div>
+            <h5 class="text-xs uppercase tracking-wider text-neutral-500 font-mono mb-4">Resources</h5>
             <ul>
-              <li><a href="#eligibility">Eligibility Calculator</a></li>
-              <li><a href="#journey">Loan Process, Step by Step</a></li>
-              <li><a href="#">Documents Checklist</a></li>
-              <li><a href="#">Compare Loan Offers</a></li>
-              <li><a href="#faq">FAQs</a></li>
+              <li class="mb-2.5"><a href="#eligibility" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Eligibility Calculator</a></li>
+              <li class="mb-2.5"><a href="#journey" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Loan Process, Step by Step</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Documents Checklist</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Compare Loan Offers</a></li>
+              <li class="mb-2.5"><a href="#faq" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">FAQs</a></li>
             </ul>
           </div>
-          <div class="foot-col">
-            <h5>Company</h5>
+          <div>
+            <h5 class="text-xs uppercase tracking-wider text-neutral-500 font-mono mb-4">Company</h5>
             <ul>
-              <li><a href="#">About Meridian</a></li>
-              <li><a href="#">Our Lending Partners</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Grievance Officer</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">About GDFCone</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Our Lending Partners</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Terms &amp; Conditions</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li class="mb-2.5"><a href="#" class="text-[13.5px] text-neutral-400 hover:text-white transition-colors">Grievance Officer</a></li>
             </ul>
           </div>
         </div>
-        <div class="foot-bottom">
-          <span>© 2026 Meridian Education Finance. All rights reserved.</span>
+        <div class="flex flex-wrap justify-between items-center gap-3 pt-6 text-xs text-neutral-500">
+          <span>© 2026 GDFCone Education Finance. All rights reserved.</span>
           <span>Design concept for demonstration purposes.</span>
         </div>
-        <p class="foot-legal">
+        <p class="text-[11.5px] leading-relaxed text-neutral-600 max-w-[900px] mt-5">
           *Conditions apply. All loans are subject to the credit approval and
           underwriting terms of the respective RBI-regulated bank or NBFC
           partner. Interest rates, loan tenure, and processing fees vary by
@@ -2525,15 +892,34 @@
     </footer>
 
     <script>
-      gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+      gsap.registerPlugin(ScrollTrigger);
 
       /* ---------- nav scroll state ---------- */
       const nav = document.getElementById("siteNav");
+      const navLogo = nav.querySelector(".nav-text");
+      const navLinks = nav.querySelectorAll(".nav-link");
       ScrollTrigger.create({
         start: 60,
-        onUpdate: (self) => {
-          if (window.scrollY > 40) nav.classList.add("scrolled");
-          else nav.classList.remove("scrolled");
+        onUpdate: () => {
+          if (window.scrollY > 40) {
+            nav.classList.add("bg-white/95", "backdrop-blur-md", "shadow-sm", "py-3.5");
+            nav.classList.remove("py-5");
+            navLogo.classList.remove("text-white");
+            navLogo.classList.add("text-neutral-900");
+            navLinks.forEach((l) => {
+              l.classList.remove("text-white/80", "hover:text-white");
+              l.classList.add("text-neutral-700", "hover:text-neutral-900");
+            });
+          } else {
+            nav.classList.remove("bg-white/95", "backdrop-blur-md", "shadow-sm", "py-3.5");
+            nav.classList.add("py-5");
+            navLogo.classList.add("text-white");
+            navLogo.classList.remove("text-neutral-900");
+            navLinks.forEach((l) => {
+              l.classList.add("text-white/80", "hover:text-white");
+              l.classList.remove("text-neutral-700", "hover:text-neutral-900");
+            });
+          }
         },
       });
 
@@ -2543,23 +929,8 @@
         gsap.to(layer, {
           yPercent: speed * 100,
           ease: "none",
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
+          scrollTrigger: { trigger: "#top", start: "top top", end: "bottom top", scrub: true },
         });
-      });
-
-      /* hero plane gentle float */
-      gsap.to(".hero-plane", {
-        y: -14,
-        x: 10,
-        duration: 3.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
       });
 
       /* ---------- generic reveal on scroll ---------- */
@@ -2573,25 +944,13 @@
         });
       });
 
-      /* feature cards / compare / dest / testi / ov staggered even without .reveal class safety */
-      gsap.utils
-        .toArray(
-          ".feat-card, .compare-card, .dest-card, .testi-card, .ov-card, .doc-item",
-        )
-        .forEach((el, i) => {
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 26 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              ease: "power2.out",
-              delay: (i % 3) * 0.06,
-              scrollTrigger: { trigger: el, start: "top 92%" },
-            },
-          );
-        });
+      gsap.utils.toArray(".doc-item").forEach((el, i) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", delay: (i % 4) * 0.05, scrollTrigger: { trigger: el, start: "top 94%" } }
+        );
+      });
 
       /* ---------- stat counters ---------- */
       document.querySelectorAll(".stat-num").forEach((el) => {
@@ -2609,10 +968,7 @@
               duration: 1.8,
               ease: "power2.out",
               onUpdate: () => {
-                el.textContent =
-                  (isDecimal
-                    ? obj.val.toFixed(1)
-                    : Math.round(obj.val).toLocaleString("en-IN")) + suffix;
+                el.textContent = (isDecimal ? obj.val.toFixed(1) : Math.round(obj.val).toLocaleString("en-IN")) + suffix;
               },
             });
           },
@@ -2621,7 +977,7 @@
 
       /* ---------- journey line draw + plane along path ---------- */
       ScrollTrigger.create({
-        trigger: ".journey-path-wrap",
+        trigger: ".journey-line-fg",
         start: "top 70%",
         end: "bottom 60%",
         scrub: 1,
@@ -2630,9 +986,11 @@
           const offset = 100 - self.progress * 100;
           line.setAttribute("stroke-dashoffset", offset);
           const plane = document.getElementById("journeyPlane");
-          const wrap = document.querySelector(".journey-path-wrap");
-          const h = wrap.offsetHeight;
-          plane.style.top = self.progress * h + "px";
+          const wrap = document.querySelector(".journey-line-fg").closest("section").querySelector(".relative.max-w-\\[900px\\]");
+          if (wrap) {
+            const h = wrap.offsetHeight;
+            plane.style.top = self.progress * h + "px";
+          }
         },
       });
 
@@ -2650,12 +1008,12 @@
       /* ---------- FAQ accordion ---------- */
       document.querySelectorAll(".faq-item").forEach((item) => {
         const q = item.querySelector(".faq-q");
-        const a = item.querySelector(".faq-a");
+        const a = item.querySelector(".faq-answer");
         q.addEventListener("click", () => {
           const isOpen = item.classList.contains("open");
           document.querySelectorAll(".faq-item.open").forEach((o) => {
             o.classList.remove("open");
-            o.querySelector(".faq-a").style.maxHeight = null;
+            o.querySelector(".faq-answer").style.maxHeight = null;
           });
           if (!isOpen) {
             item.classList.add("open");
@@ -2665,32 +1023,27 @@
       });
 
       /* ---------- eligibility chip selection ---------- */
-      document.querySelectorAll(".chip-set").forEach((group) => {
+      document.querySelectorAll(".chip-set, [data-group]").forEach((group) => {
         group.addEventListener("click", (e) => {
           if (!e.target.classList.contains("chip")) return;
-          group
-            .querySelectorAll(".chip")
-            .forEach((c) => c.classList.remove("active"));
-          e.target.classList.add("active");
+          group.querySelectorAll(".chip").forEach((c) => {
+            c.classList.remove("bg-white", "text-neutral-900", "border-white");
+            c.classList.add("bg-white/5", "text-neutral-200", "border-white/25");
+          });
+          e.target.classList.remove("bg-white/5", "text-neutral-200", "border-white/25");
+          e.target.classList.add("bg-white", "text-neutral-900", "border-white");
         });
       });
 
       document.getElementById("eligBtn").addEventListener("click", () => {
-        const cibil = document.querySelector(
-          '[data-group="cibil"] .chip.active',
-        );
-        const collateral = document.querySelector(
-          '[data-group="collateral"] .chip.active',
-        );
-        const admit = document.querySelector(
-          '[data-group="admit"] .chip.active',
-        );
+        const cibil = document.querySelector('[data-group="cibil"] .chip.bg-white');
+        const collateral = document.querySelector('[data-group="collateral"] .chip.bg-white');
+        const admit = document.querySelector('[data-group="admit"] .chip.bg-white');
         const result = document.getElementById("elig-result");
 
         if (!cibil || !collateral || !admit) {
-          result.style.display = "block";
-          result.innerHTML =
-            "Please select an option in every field so we can give you an accurate read.";
+          result.classList.remove("hidden");
+          result.innerHTML = "Please select an option in every field so we can give you an accurate read.";
           return;
         }
 
@@ -2699,22 +1052,22 @@
         const collateralYes = collateral.textContent === "Yes";
 
         if (collateralYes) {
-          msg = `<strong>Strong fit for a secured loan.</strong> With collateral on the table, public sector banks are likely to offer you the most competitive rate — typically 8–11% — alongside a longer repayment tenure.`;
+          msg = `<strong class="text-gold">Strong fit for a secured loan.</strong> With collateral on the table, public sector banks are likely to offer you the most competitive rate — typically 8–11% — alongside a longer repayment tenure.`;
         } else if (cibilText === "750+") {
-          msg = `<strong>Strong fit for a collateral-free NBFC loan.</strong> A co-applicant CIBIL score of ${cibilText} puts you in a strong position for fast, unsecured approval — often within 7–15 days.`;
+          msg = `<strong class="text-gold">Strong fit for a collateral-free NBFC loan.</strong> A co-applicant CIBIL score of ${cibilText} puts you in a strong position for fast, unsecured approval — often within 7–15 days.`;
         } else if (cibilText === "700–750") {
-          msg = `<strong>Good fit for an unsecured loan.</strong> Most NBFC partners work comfortably in this CIBIL range. Expect a slightly higher rate than the lowest bracket, still with a fully digital process.`;
+          msg = `<strong class="text-gold">Good fit for an unsecured loan.</strong> Most NBFC partners work comfortably in this CIBIL range. Expect a slightly higher rate than the lowest bracket, still with a fully digital process.`;
         } else if (cibilText === "Below 700") {
-          msg = `<strong>Still fundable.</strong> A handful of our NBFC partners look beyond the CIBIL score to income stability and employment history — an advisor can confirm which lenders fit your profile.`;
+          msg = `<strong class="text-gold">Still fundable.</strong> A handful of our NBFC partners look beyond the CIBIL score to income stability and employment history — an advisor can confirm which lenders fit your profile.`;
         } else {
-          msg = `<strong>Let's find out together.</strong> Share your co-applicant's PAN with our advisor for a free, no-obligation CIBIL pull before you apply anywhere.`;
+          msg = `<strong class="text-gold">Let's find out together.</strong> Share your co-applicant's PAN with our advisor for a free, no-obligation CIBIL pull before you apply anywhere.`;
         }
 
         if (admit.textContent === "Still applying") {
-          msg += ` Several lenders also offer <strong>pre-admission, in-principle approval</strong> — useful while your applications are still in motion.`;
+          msg += ` Several lenders also offer <strong class="text-gold">pre-admission, in-principle approval</strong> — useful while your applications are still in motion.`;
         }
 
-        result.style.display = "block";
+        result.classList.remove("hidden");
         result.innerHTML = msg;
       });
 
